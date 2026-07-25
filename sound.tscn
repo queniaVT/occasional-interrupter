@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dumpahw1plv5c"]
+
+[ext_resource type="Script" uid="uid://qof72kwqvrw0" path="res://sound.gd" id="1_3j8lq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlly2"]
+
+[node name="sound" type="PanelContainer" unique_id=1513627069]
+custom_minimum_size = Vector2(300, 150)
+offset_right = 300.0
+offset_bottom = 150.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nlly2")
+script = ExtResource("1_3j8lq")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1022874056]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=438666775]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1459816089]
+custom_minimum_size = Vector2(200, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "soundName"
+autowrap_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer" unique_id=1544423330]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_position = Vector2(100, 0)
+offset_transform_scale = Vector2(5, 5)
+button_pressed = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=528683028]

@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://bvurijhog1i7y"]
+
+[ext_resource type="Script" uid="uid://d2usmmg1q1w8x" path="res://main.gd" id="1_0xm2m"]
+
+[node name="main" type="Control" unique_id=154453852]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0xm2m")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=132338258]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offsets = PackedInt32Array(570)
+split_offset = 570
+
+[node name="sounds" type="PanelContainer" parent="HSplitContainer" unique_id=711998845]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/sounds" unique_id=1378025980]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/sounds/MarginContainer" unique_id=1158749013]
+layout_mode = 2
+
+[node name="soundContainer" type="VBoxContainer" parent="HSplitContainer/sounds/MarginContainer/ScrollContainer" unique_id=2075000759]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="options" type="PanelContainer" parent="HSplitContainer" unique_id=1740889544]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/options" unique_id=811372248]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/options/MarginContainer" unique_id=1554769615]
+layout_mode = 2
+
+[node name="soundName" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=1593469444]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundName" unique_id=1671559259]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "sound name"
+
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundName" unique_id=1781880667]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "amohgus"
+
+[node name="minTimer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=1332298780]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer" unique_id=212170464]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "minimun timer length"
+
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer" unique_id=423750164]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "0.0"
+
+[node name="maxTimer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=817980499]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer" unique_id=373480978]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "maximum timer length"
+
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer" unique_id=1602716183]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "300.0"
+
+[node name="soundPath" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=630801359]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath" unique_id=698523159]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "sound path"
+
+[node name="Button" type="Button" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath" unique_id=575100541]
+layout_mode = 2
+text = "browse..."
+
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath" unique_id=870041659]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "/home/user/music/amogus.mp3"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer" unique_id=1785665819]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="test" type="Button" parent="HSplitContainer/options/MarginContainer/HBoxContainer" unique_id=154574090]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "test sound"
+
+[node name="add" type="Button" parent="HSplitContainer/options/MarginContainer/HBoxContainer" unique_id=1170518367]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "add"
+
+[node name="dupe" type="Button" parent="HSplitContainer/options/MarginContainer/HBoxContainer" unique_id=2032359103]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "duplicate"
+
+[node name="del" type="Button" parent="HSplitContainer/options/MarginContainer/HBoxContainer" unique_id=775116660]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "delete"
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=978847236]
+oversampling_override = 1.0
+title = "select sound path"
+position = Vector2i(0, 36)
+
+[connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/test" to="." method="_on_test_pressed"]
+[connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/dupe" to="." method="_on_dupe_pressed"]
+[connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/del" to="." method="_on_del_pressed"]
