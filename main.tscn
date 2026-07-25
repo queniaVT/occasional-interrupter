@@ -106,7 +106,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "sound path"
 
-[node name="Button" type="Button" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath" unique_id=575100541]
+[node name="browse" type="Button" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath" unique_id=575100541]
 layout_mode = 2
 text = "browse..."
 
@@ -144,8 +144,11 @@ text = "delete"
 oversampling_override = 1.0
 title = "select sound path"
 position = Vector2i(0, 36)
+file_mode = 0
 
+[connection signal="pressed" from="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/browse" to="." method="_on_browse_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/test" to="." method="_on_test_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/add" to="." method="_on_add_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/dupe" to="." method="_on_dupe_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/del" to="." method="_on_del_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

@@ -5,6 +5,8 @@ extends Control
 @onready var maxTimerBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/TextEdit
 @onready var soundPathBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/TextEdit
 @onready var soundContainer: VBoxContainer = $HSplitContainer/sounds/MarginContainer/ScrollContainer/soundContainer
+@onready var fileDialog: FileDialog = $FileDialog
+
 const soundScene = preload("res://sound.tscn")
 var selectedSound: Control = null
 
@@ -46,3 +48,10 @@ func _on_del_pressed() -> void:
 func _on_test_pressed() -> void:
 	if selectedSound:
 		selectedSound.playSound()
+
+func _on_browse_pressed() -> void:
+	fileDialog.filters = PackedStringArray(["*.mp3;*.MP3"])
+	fileDialog.popup_centered_ratio(0.7)
+
+func _on_file_dialog_file_selected(path: String) -> void:
+	soundPathBox.text = path
