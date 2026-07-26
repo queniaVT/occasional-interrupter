@@ -74,7 +74,7 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer" unique_id=212170464]
 layout_mode = 2
 size_flags_horizontal = 2
-text = "minimun timer length"
+text = "minimun timer length (seconds)"
 
 [node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer" unique_id=423750164]
 custom_minimum_size = Vector2(300, 40)
@@ -89,7 +89,7 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer" unique_id=373480978]
 layout_mode = 2
 size_flags_horizontal = 2
-text = "maximum timer length"
+text = "maximum timer length (seconds)"
 
 [node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer" unique_id=1602716183]
 custom_minimum_size = Vector2(300, 40)
@@ -125,6 +125,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "test sound"
 
+[node name="save" type="Button" parent="HSplitContainer/options/MarginContainer/HBoxContainer" unique_id=268187065]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "save"
+
 [node name="add" type="Button" parent="HSplitContainer/options/MarginContainer/HBoxContainer" unique_id=1170518367]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -145,9 +150,11 @@ oversampling_override = 1.0
 title = "select sound path"
 position = Vector2i(0, 36)
 file_mode = 0
+access = 2
 
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/browse" to="." method="_on_browse_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/test" to="." method="_on_test_pressed"]
+[connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/add" to="." method="_on_add_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/dupe" to="." method="_on_dupe_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/del" to="." method="_on_del_pressed"]

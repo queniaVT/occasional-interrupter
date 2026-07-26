@@ -39,7 +39,8 @@ func set_selected(value: bool) -> void:
 	modulate = Color(1, 1, 1) if !soundSelected else Color(1, 0.95, 0.8)
 
 func _ready() -> void:
-	enabled = checkBox.button_pressed
+	if enabled: checkBox.button_pressed = true
+	if !enabled: checkBox.button_pressed = false
 	while enabled:
 		minTimerFloat = stringToFloat(minTimer)
 		maxTimerFloat = stringToFloat(maxTimer)
@@ -48,7 +49,6 @@ func _ready() -> void:
 		playSound()
 
 func _process(_delta: float) -> void:
-	#enabled = checkBox.button_pressed
 	label.text = soundName
 
 func _on_check_box_toggled(value: bool) -> void:

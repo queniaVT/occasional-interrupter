@@ -9,9 +9,27 @@ extends Control
 
 const soundScene = preload("res://sound.tscn")
 var selectedSound: Control = null
+var savePath = "user://data.json"
 
 func _ready() -> void:
-	pass
+	if !FileAccess.file_exists(savePath): return
+	var file := FileAccess.open(savePath, FileAccess.READ)
+	var jsonText := file.get_as_text()
+	file.close()
+	var result: Variant = JSON.parse_string(jsonText)
+	if typeof(result) != TYPE_DICTIONARY: return
+	var soundData = result.get("sounds", [])
+	if typeof(soundData) != TYPE_ARRAY: return
+	for sound in soundData:
+		var instance = soundScene.instantiate()
+		instance.enabled = sound.enabled
+		instance.soundName = sound.soundName
+		instance.minTimer = sound.minTimer
+		instance.maxTimer = sound.maxTimer
+		instance.soundPath = sound.soundPath
+		soundContainer.add_child(instance)
+		instance.set_selected(true)
+		_on_sound_selected(instance)
 
 func _on_sound_selected(sound: Control) -> void:
 	selectedSound = sound
@@ -55,3 +73,19 @@ func _on_browse_pressed() -> void:
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	soundPathBox.text = path
+
+func _on_save_pressed() -> void:
+	var soundData = []
+	for sound in soundContainer.get_children():
+		soundData.push_back({
+			"enabled": sound.enabled,
+			"soundName": sound.soundName,
+			"minTimer": sound.minTimer,
+			"maxTimer": sound.maxTimer,
+			"soundPath": sound.soundPath
+		})
+	var data := {"sounds": soundData}
+	var jsonText := JSON.stringify(data, "\t")
+	var file := FileAccess.open(savePath, FileAccess.WRITE)
+	file.store_string(jsonText)
+	file.close()
