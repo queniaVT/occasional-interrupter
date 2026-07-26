@@ -46,7 +46,7 @@ func _ready() -> void:
 		maxTimerFloat = stringToFloat(maxTimer)
 		if minTimerFloat < 0.0 && maxTimerFloat < 0.0: return
 		await get_tree().create_timer(randf_range(minTimerFloat, maxTimerFloat)).timeout
-		playSound()
+		if enabled: playSound()
 
 func _process(_delta: float) -> void:
 	label.text = soundName
