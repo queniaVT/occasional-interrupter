@@ -58,7 +58,15 @@ func _on_add_pressed() -> void:
 	_on_sound_selected(instance)
 
 func _on_dupe_pressed() -> void:
-	selectedSound.duplicate() # doesnt work for some reason idk fix it later
+	var instance = soundScene.instantiate()
+	instance.enabled = selectedSound.enabled
+	instance.soundName = selectedSound.soundName
+	instance.minTimer = selectedSound.minTimer
+	instance.maxTimer = selectedSound.maxTimer
+	instance.soundPath = selectedSound.soundPath
+	soundContainer.add_child(instance)
+	instance.set_selected(true)
+	_on_sound_selected(instance)
 
 func _on_del_pressed() -> void:
 	selectedSound.queue_free()
