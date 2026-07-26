@@ -28,7 +28,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "soundName"
-autowrap_mode = 2
+autowrap_mode = 3
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer" unique_id=1544423330]
 custom_minimum_size = Vector2(64, 64)

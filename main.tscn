@@ -116,6 +116,12 @@ layout_mode = 2
 size_flags_horizontal = 8
 placeholder_text = "/home/user/music/amogus.mp3"
 
+[node name="info" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=1481812525]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+text = "after adjusting the timing make sure to disable and enable the sound to make sure its gonna work cuz my code sucks xd"
+autowrap_mode = 3
+
 [node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer" unique_id=1785665819]
 layout_mode = 2
 size_flags_vertical = 8
@@ -147,7 +153,7 @@ text = "delete"
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=978847236]
 oversampling_override = 1.0
-title = "select sound path"
+title = "Open a File"
 position = Vector2i(0, 36)
 file_mode = 0
 access = 2
