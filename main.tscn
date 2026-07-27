@@ -18,8 +18,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-split_offsets = PackedInt32Array(570)
-split_offset = 570
+split_offsets = PackedInt32Array(600)
+split_offset = 600
 
 [node name="sounds" type="PanelContainer" parent="HSplitContainer" unique_id=711998845]
 layout_mode = 2
@@ -67,7 +67,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundName" unique_id=1671559259]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundName" unique_id=1181648410]
+layout_mode = 2
+theme_override_constants/margin_right = 124
+
+[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundName/MarginContainer" unique_id=1671559259]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "sound name"
@@ -82,9 +86,13 @@ placeholder_text = "amohgus"
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer" unique_id=212170464]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer" unique_id=1467584287]
 layout_mode = 2
-size_flags_horizontal = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/MarginContainer" unique_id=212170464]
+layout_mode = 2
+size_flags_horizontal = 0
 text = "minimun timer length"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer" unique_id=581888947]
@@ -114,7 +122,11 @@ placeholder_text = "hours"
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer" unique_id=373480978]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer" unique_id=1991909091]
+layout_mode = 2
+theme_override_constants/margin_right = 41
+
+[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/MarginContainer" unique_id=373480978]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "maximum timer length"
@@ -146,7 +158,11 @@ placeholder_text = "hours"
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath" unique_id=698523159]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath" unique_id=237824652]
+layout_mode = 2
+theme_override_constants/margin_right = 132
+
+[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/MarginContainer" unique_id=698523159]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "sound path"
@@ -170,7 +186,11 @@ text = "browse..."
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume" unique_id=2025581295]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume" unique_id=1058310921]
+layout_mode = 2
+theme_override_constants/margin_right = 110
+
+[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume/MarginContainer" unique_id=2025581295]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "sound volume"

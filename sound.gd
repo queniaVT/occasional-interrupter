@@ -35,7 +35,7 @@ func stringToFloat(s: String, m: String, h: String) -> float:
 	if m.is_empty(): m = "0.0"
 	if h.is_empty(): h = "0.0"
 	if !s.is_valid_float() || !m.is_valid_float() || !h.is_valid_float(): return -1.0
-	return float(s) + float(m) * 60 + float(h) * 360
+	return float(s) + float(m) * 60.0 + float(h) * 360.0
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
