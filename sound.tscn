@@ -41,6 +41,4 @@ offset_transform_position = Vector2(100, 0)
 offset_transform_scale = Vector2(5, 5)
 button_pressed = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=528683028]
-
 [connection signal="toggled" from="MarginContainer/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]

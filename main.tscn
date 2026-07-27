@@ -13,7 +13,7 @@ script = ExtResource("1_0xm2m")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=132338258]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -66,6 +66,7 @@ custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 size_flags_horizontal = 8
 placeholder_text = "amohgus"
+tab_input_mode = false
 
 [node name="minTimer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=1332298780]
 layout_mode = 2
@@ -74,13 +75,33 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer" unique_id=212170464]
 layout_mode = 2
 size_flags_horizontal = 2
-text = "minimun timer length (seconds)"
+text = "minimun timer length"
 
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer" unique_id=423750164]
-custom_minimum_size = Vector2(300, 40)
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer" unique_id=581888947]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 8
-placeholder_text = "0.0"
+size_flags_horizontal = 3
+
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer" unique_id=423750164]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "seconds"
+tab_input_mode = false
+
+[node name="TextEdit2" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer" unique_id=713387656]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "minutes"
+tab_input_mode = false
+
+[node name="TextEdit3" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer" unique_id=1331708698]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "hours"
+tab_input_mode = false
 
 [node name="maxTimer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=817980499]
 layout_mode = 2
@@ -89,13 +110,33 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer" unique_id=373480978]
 layout_mode = 2
 size_flags_horizontal = 2
-text = "maximum timer length (seconds)"
+text = "maximum timer length"
 
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer" unique_id=1602716183]
-custom_minimum_size = Vector2(300, 40)
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer" unique_id=1772078972]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 8
-placeholder_text = "300.0"
+size_flags_horizontal = 3
+
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer" unique_id=1764537999]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "seconds"
+tab_input_mode = false
+
+[node name="TextEdit2" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer" unique_id=61310618]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "minutes"
+tab_input_mode = false
+
+[node name="TextEdit3" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer" unique_id=2094131904]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "hours"
+tab_input_mode = false
 
 [node name="soundPath" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=630801359]
 layout_mode = 2
@@ -115,6 +156,7 @@ custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 size_flags_horizontal = 8
 placeholder_text = "/home/user/music/amogus.mp3"
+tab_input_mode = false
 
 [node name="info" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=1481812525]
 custom_minimum_size = Vector2(300, 50)

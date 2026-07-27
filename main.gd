@@ -1,8 +1,12 @@
 extends Control
 
 @onready var soundNameBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundName/TextEdit
-@onready var minTimerBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/TextEdit
-@onready var maxTimerBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/TextEdit
+@onready var minTimerBoxS: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer/TextEdit
+@onready var minTimerBoxM: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer/TextEdit2
+@onready var minTimerBoxH: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer/TextEdit3
+@onready var maxTimerBoxS: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/TextEdit
+@onready var maxTimerBoxM: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/TextEdit2
+@onready var maxTimerBoxH: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/TextEdit3
 @onready var soundPathBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/TextEdit
 @onready var soundContainer: VBoxContainer = $HSplitContainer/sounds/MarginContainer/ScrollContainer/soundContainer
 @onready var fileDialog: FileDialog = $FileDialog
@@ -24,8 +28,12 @@ func _ready() -> void:
 		var instance = soundScene.instantiate()
 		instance.enabled = sound.enabled
 		instance.soundName = sound.soundName
-		instance.minTimer = sound.minTimer
-		instance.maxTimer = sound.maxTimer
+		instance.minTimerS = sound.minTimerS
+		instance.minTimerM = sound.minTimerM
+		instance.minTimerH = sound.minTimerH
+		instance.maxTimerS = sound.maxTimerS
+		instance.maxTimerM = sound.maxTimerM
+		instance.maxTimerH = sound.maxTimerH
 		instance.soundPath = sound.soundPath
 		soundContainer.add_child(instance)
 		instance.set_selected(true)
@@ -34,8 +42,12 @@ func _ready() -> void:
 func _on_sound_selected(sound: Control) -> void:
 	selectedSound = sound
 	soundNameBox.text = selectedSound.soundName
-	minTimerBox.text = selectedSound.minTimer
-	maxTimerBox.text = selectedSound.maxTimer
+	minTimerBoxS.text = selectedSound.minTimerS
+	minTimerBoxM.text = selectedSound.minTimerM
+	minTimerBoxH.text = selectedSound.minTimerH
+	maxTimerBoxS.text = selectedSound.maxTimerS
+	maxTimerBoxM.text = selectedSound.maxTimerM
+	maxTimerBoxH.text = selectedSound.maxTimerH
 	soundPathBox.text = selectedSound.soundPath
 	for child in soundContainer.get_children():
 		if child.has_method("set_selected"):
@@ -44,8 +56,12 @@ func _on_sound_selected(sound: Control) -> void:
 func _process(_delta: float) -> void:
 	if selectedSound:
 		selectedSound.soundName = soundNameBox.text
-		selectedSound.minTimer = minTimerBox.text
-		selectedSound.maxTimer = maxTimerBox.text
+		selectedSound.minTimerS = minTimerBoxS.text
+		selectedSound.minTimerM = minTimerBoxM.text
+		selectedSound.minTimerH = minTimerBoxH.text
+		selectedSound.maxTimerS = maxTimerBoxS.text
+		selectedSound.maxTimerM = maxTimerBoxM.text
+		selectedSound.maxTimerH = maxTimerBoxH.text
 		selectedSound.soundPath = soundPathBox.text
 	for sound in soundContainer.get_children():
 		if !sound.is_connected("selected", _on_sound_selected):
@@ -61,8 +77,12 @@ func _on_dupe_pressed() -> void:
 	var instance = soundScene.instantiate()
 	instance.enabled = selectedSound.enabled
 	instance.soundName = selectedSound.soundName
-	instance.minTimer = selectedSound.minTimer
-	instance.maxTimer = selectedSound.maxTimer
+	instance.minTimerS = selectedSound.minTimerS
+	instance.minTimerM = selectedSound.minTimerM
+	instance.minTimerH = selectedSound.minTimerH
+	instance.maxTimerS = selectedSound.maxTimerS
+	instance.maxTimerM = selectedSound.maxTimerM
+	instance.maxTimerH = selectedSound.maxTimerH
 	instance.soundPath = selectedSound.soundPath
 	soundContainer.add_child(instance)
 	instance.set_selected(true)
@@ -88,8 +108,12 @@ func _on_save_pressed() -> void:
 		soundData.push_back({
 			"enabled": sound.enabled,
 			"soundName": sound.soundName,
-			"minTimer": sound.minTimer,
-			"maxTimer": sound.maxTimer,
+			"minTimerS": sound.minTimerS,
+			"minTimerM": sound.minTimerM,
+			"minTimerH": sound.minTimerH,
+			"maxTimerS": sound.maxTimerS,
+			"maxTimerM": sound.maxTimerM,
+			"maxTimerH": sound.maxTimerH,
 			"soundPath": sound.soundPath
 		})
 	var data := {"sounds": soundData}
