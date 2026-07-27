@@ -21,6 +21,7 @@ var savePath = "user://data.json"
 
 func _ready() -> void:
 	for le in get_tree().get_nodes_in_group("le"): le.text_submitted.connect(_on_text_submitted.bind(le))
+	for timer in get_tree().get_nodes_in_group("timer"): timer.text_changed.connect(_on_text_changed)
 	if !FileAccess.file_exists(savePath): return
 	var file := FileAccess.open(savePath, FileAccess.READ)
 	var jsonText := file.get_as_text()
@@ -46,6 +47,11 @@ func _ready() -> void:
 		_on_sound_selected(instance)
 
 func _on_text_submitted(_text: String, le: LineEdit) -> void: le.release_focus()
+
+func _on_text_changed(_text: String):
+	selectedSound.enabled = false
+	selectedSound.enabled = true
+	selectedSound._ready()
 
 func _on_sound_selected(sound: Control) -> void:
 	selectedSound = sound

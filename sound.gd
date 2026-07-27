@@ -14,7 +14,7 @@ var maxTimerM: String
 var maxTimerH: String
 var maxTimerFloat: float
 var soundPath: String
-var soundVolume: float
+var soundVolume: float = 100
 
 signal selected(sound: Control)
 
