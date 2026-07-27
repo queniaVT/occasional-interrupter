@@ -22,9 +22,7 @@ var soundSelected := false
 
 func playSound() -> void:
 	var loaded := AudioStreamMP3.load_from_file(soundPath)
-	if loaded == null:
-		push_error("Failed to load MP3 from: %s" % soundPath)
-		return
+	if loaded == null: return
 	var player := AudioStreamPlayer.new()
 	add_child(player)
 	player.stream = loaded
@@ -49,18 +47,17 @@ func set_selected(value: bool) -> void:
 	modulate = Color(1, 1, 1) if !soundSelected else Color(1, 0.95, 0.8)
 
 func _ready() -> void:
+	randomize()
 	if enabled: checkBox.button_pressed = true
 	if !enabled: checkBox.button_pressed = false
 	while enabled:
 		minTimerFloat = stringToFloat(minTimerS, minTimerM, minTimerH)
 		maxTimerFloat = stringToFloat(maxTimerS, maxTimerM, maxTimerH)
-		if minTimerFloat < 0.0 && maxTimerFloat < 0.0: return
-		randomize()
+		if minTimerFloat < 0.0 && maxTimerFloat < 0.0: break
 		await get_tree().create_timer(randf_range(minTimerFloat, maxTimerFloat)).timeout
 		if enabled: playSound()
 
-func _process(_delta: float) -> void:
-	label.text = soundName
+func _process(_delta: float) -> void: label.text = soundName
 
 func _on_check_box_toggled(value: bool) -> void:
 	enabled = value
