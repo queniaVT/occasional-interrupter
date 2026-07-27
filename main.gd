@@ -1,16 +1,18 @@
 extends Control
 
-@onready var soundNameBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundName/TextEdit
-@onready var minTimerBoxS: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer/TextEdit
-@onready var minTimerBoxM: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer/TextEdit2
-@onready var minTimerBoxH: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer/TextEdit3
-@onready var maxTimerBoxS: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/TextEdit
-@onready var maxTimerBoxM: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/TextEdit2
-@onready var maxTimerBoxH: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/TextEdit3
-@onready var soundPathBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/HBoxContainer/TextEdit
+@onready var soundNameBox: LineEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundName/LineEdit
+@onready var minTimerBoxS: LineEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer/LineEdit
+@onready var minTimerBoxM: LineEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer/LineEdit2
+@onready var minTimerBoxH: LineEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer/LineEdit3
+@onready var maxTimerBoxS: LineEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/LineEdit
+@onready var maxTimerBoxM: LineEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/LineEdit2
+@onready var maxTimerBoxH: LineEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/LineEdit3
+@onready var soundPathBox: LineEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/HBoxContainer/LineEdit
+@onready var soundVolumeBox: LineEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume/HBoxContainer/LineEdit
 @onready var volumeSlider: HSlider = $HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume/HBoxContainer/volumeSlider
-@onready var soundVolumeBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume/HBoxContainer/TextEdit
-@onready var soundContainer: VBoxContainer = $HSplitContainer/sounds/MarginContainer/ScrollContainer/soundContainer
+
+@onready var searchBar: LineEdit = $HSplitContainer/sounds/MarginContainer/VBoxContainer/LineEdit
+@onready var soundContainer: VBoxContainer = $HSplitContainer/sounds/MarginContainer/VBoxContainer/ScrollContainer/soundContainer
 @onready var fileDialog: FileDialog = $FileDialog
 
 const soundScene = preload("res://sound.tscn")
@@ -18,6 +20,8 @@ var selectedSound: Control = null
 var savePath = "user://data.json"
 
 func _ready() -> void:
+	for le in get_tree().get_nodes_in_group("le"):
+		le.text_submitted.connect(_on_text_submitted.bind(le))
 	if !FileAccess.file_exists(savePath): return
 	var file := FileAccess.open(savePath, FileAccess.READ)
 	var jsonText := file.get_as_text()
@@ -41,6 +45,8 @@ func _ready() -> void:
 		soundContainer.add_child(instance)
 		instance.set_selected(true)
 		_on_sound_selected(instance)
+
+func _on_text_submitted(_text: String, le: LineEdit) -> void: le.release_focus()
 
 func _on_sound_selected(sound: Control) -> void:
 	selectedSound = sound
@@ -75,6 +81,11 @@ func _process(_delta: float) -> void:
 		if !soundVolumeBox.text.is_valid_float(): return
 		volumeSlider.value = float(soundVolumeBox.text)
 	else: soundVolumeBox.text = str(volumeSlider.value).trim_suffix(".0")
+	for sound in soundContainer.get_children():
+		if sound.soundName.strip_edges().to_lower().contains(searchBar.text.strip_edges().to_lower()):
+			sound.visible = true
+		else: sound.visible = false
+		if searchBar.text.is_empty(): sound.visible = true
 
 func _on_add_pressed() -> void:
 	var instance = soundScene.instantiate()
@@ -98,19 +109,15 @@ func _on_dupe_pressed() -> void:
 	instance.set_selected(true)
 	_on_sound_selected(instance)
 
-func _on_del_pressed() -> void:
-	selectedSound.queue_free()
+func _on_del_pressed() -> void: selectedSound.queue_free()
 
-func _on_test_pressed() -> void:
-	if selectedSound:
-		selectedSound.playSound()
+func _on_test_pressed() -> void: if selectedSound: selectedSound.playSound()
 
 func _on_browse_pressed() -> void:
 	fileDialog.filters = PackedStringArray(["*.mp3;*.MP3"])
 	fileDialog.popup_centered_ratio(0.7)
 
-func _on_file_dialog_file_selected(path: String) -> void:
-	soundPathBox.text = path
+func _on_file_dialog_file_selected(path: String) -> void: soundPathBox.text = path
 
 func _on_save_pressed() -> void:
 	var soundData = []

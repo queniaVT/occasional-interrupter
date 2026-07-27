@@ -31,12 +31,23 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/sounds/MarginContainer" unique_id=1158749013]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/sounds/MarginContainer" unique_id=202103432]
 layout_mode = 2
 
-[node name="soundContainer" type="VBoxContainer" parent="HSplitContainer/sounds/MarginContainer/ScrollContainer" unique_id=2075000759]
+[node name="LineEdit" type="LineEdit" parent="HSplitContainer/sounds/MarginContainer/VBoxContainer" unique_id=57442441 groups=["le"]]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+placeholder_text = "search..."
+clear_button_enabled = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/sounds/MarginContainer/VBoxContainer" unique_id=1158749013]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="soundContainer" type="VBoxContainer" parent="HSplitContainer/sounds/MarginContainer/VBoxContainer/ScrollContainer" unique_id=2075000759]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="options" type="PanelContainer" parent="HSplitContainer" unique_id=1740889544]
 layout_mode = 2
@@ -61,12 +72,11 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "sound name"
 
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundName" unique_id=1781880667]
+[node name="LineEdit" type="LineEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundName" unique_id=2059509708 groups=["le"]]
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "amohgus"
-tab_input_mode = false
 
 [node name="minTimer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=1332298780]
 layout_mode = 2
@@ -82,26 +92,23 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer" unique_id=423750164]
+[node name="LineEdit" type="LineEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer" unique_id=2098924489 groups=["le"]]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "seconds"
-tab_input_mode = false
 
-[node name="TextEdit2" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer" unique_id=713387656]
+[node name="LineEdit2" type="LineEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer" unique_id=544746742 groups=["le"]]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "minutes"
-tab_input_mode = false
 
-[node name="TextEdit3" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer" unique_id=1331708698]
+[node name="LineEdit3" type="LineEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/minTimer/HBoxContainer" unique_id=1467821452 groups=["le"]]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "hours"
-tab_input_mode = false
 
 [node name="maxTimer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=817980499]
 layout_mode = 2
@@ -117,26 +124,23 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer" unique_id=1764537999]
+[node name="LineEdit" type="LineEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer" unique_id=143934651 groups=["le"]]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "seconds"
-tab_input_mode = false
 
-[node name="TextEdit2" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer" unique_id=61310618]
+[node name="LineEdit2" type="LineEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer" unique_id=195613198 groups=["le"]]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "minutes"
-tab_input_mode = false
 
-[node name="TextEdit3" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer" unique_id=2094131904]
+[node name="LineEdit3" type="LineEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer" unique_id=2123248756 groups=["le"]]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "hours"
-tab_input_mode = false
 
 [node name="soundPath" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=630801359]
 layout_mode = 2
@@ -151,12 +155,11 @@ text = "sound path"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/HBoxContainer" unique_id=870041659]
+[node name="LineEdit" type="LineEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/HBoxContainer" unique_id=1258145410 groups=["le"]]
 custom_minimum_size = Vector2(218, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "/home/user/music/amogus.mp3"
-tab_input_mode = false
 
 [node name="browse" type="Button" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/HBoxContainer" unique_id=575100541]
 custom_minimum_size = Vector2(70, 40)
@@ -183,11 +186,11 @@ size_flags_horizontal = 3
 max_value = 200.0
 value = 100.0
 
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume/HBoxContainer" unique_id=1410240760]
+[node name="LineEdit" type="LineEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume/HBoxContainer" unique_id=1855252218 groups=["le"]]
 custom_minimum_size = Vector2(50, 40)
+custom_maximum_size = Vector2(50, -1)
 layout_mode = 2
 placeholder_text = "%"
-tab_input_mode = false
 
 [node name="info" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=1481812525]
 custom_minimum_size = Vector2(300, 50)
