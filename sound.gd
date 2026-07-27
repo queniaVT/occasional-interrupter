@@ -14,6 +14,7 @@ var maxTimerM: String
 var maxTimerH: String
 var maxTimerFloat: float
 var soundPath: String
+var soundVolume: float
 
 signal selected(sound: Control)
 
@@ -28,10 +29,10 @@ func playSound() -> void:
 	add_child(player)
 	player.stream = loaded
 	player.finished.connect(func(): player.queue_free())
+	player.volume_linear = soundVolume / 100
 	player.play()
 
 func stringToFloat(s: String, m: String, h: String) -> float:
-	if s.is_empty() && m.is_empty() && h.is_empty(): return -1.0
 	if s.is_empty(): s = "0.0"
 	if m.is_empty(): m = "0.0"
 	if h.is_empty(): h = "0.0"

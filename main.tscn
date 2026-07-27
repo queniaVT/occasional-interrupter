@@ -64,7 +64,7 @@ text = "sound name"
 [node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundName" unique_id=1781880667]
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 3
 placeholder_text = "amohgus"
 tab_input_mode = false
 
@@ -147,15 +147,46 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "sound path"
 
-[node name="browse" type="Button" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath" unique_id=575100541]
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath" unique_id=1392291496]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/HBoxContainer" unique_id=870041659]
+custom_minimum_size = Vector2(218, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "/home/user/music/amogus.mp3"
+tab_input_mode = false
+
+[node name="browse" type="Button" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/HBoxContainer" unique_id=575100541]
+custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
 text = "browse..."
 
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath" unique_id=870041659]
-custom_minimum_size = Vector2(300, 40)
+[node name="soundVolume" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=254056585]
 layout_mode = 2
-size_flags_horizontal = 8
-placeholder_text = "/home/user/music/amogus.mp3"
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume" unique_id=2025581295]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "sound volume"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume" unique_id=702190173]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="volumeSlider" type="HSlider" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume/HBoxContainer" unique_id=1978935606]
+custom_minimum_size = Vector2(246, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 200.0
+value = 100.0
+
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume/HBoxContainer" unique_id=1410240760]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+placeholder_text = "%"
 tab_input_mode = false
 
 [node name="info" type="Label" parent="HSplitContainer/options/MarginContainer/VBoxContainer" unique_id=1481812525]
@@ -200,7 +231,7 @@ position = Vector2i(0, 36)
 file_mode = 0
 access = 2
 
-[connection signal="pressed" from="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/browse" to="." method="_on_browse_pressed"]
+[connection signal="pressed" from="HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/HBoxContainer/browse" to="." method="_on_browse_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/test" to="." method="_on_test_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="HSplitContainer/options/MarginContainer/HBoxContainer/add" to="." method="_on_add_pressed"]

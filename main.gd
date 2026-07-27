@@ -7,7 +7,9 @@ extends Control
 @onready var maxTimerBoxS: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/TextEdit
 @onready var maxTimerBoxM: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/TextEdit2
 @onready var maxTimerBoxH: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/maxTimer/HBoxContainer/TextEdit3
-@onready var soundPathBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/TextEdit
+@onready var soundPathBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundPath/HBoxContainer/TextEdit
+@onready var volumeSlider: HSlider = $HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume/HBoxContainer/volumeSlider
+@onready var soundVolumeBox: TextEdit = $HSplitContainer/options/MarginContainer/VBoxContainer/soundVolume/HBoxContainer/TextEdit
 @onready var soundContainer: VBoxContainer = $HSplitContainer/sounds/MarginContainer/ScrollContainer/soundContainer
 @onready var fileDialog: FileDialog = $FileDialog
 
@@ -35,6 +37,7 @@ func _ready() -> void:
 		instance.maxTimerM = sound.maxTimerM
 		instance.maxTimerH = sound.maxTimerH
 		instance.soundPath = sound.soundPath
+		instance.soundVolume = sound.soundVolume
 		soundContainer.add_child(instance)
 		instance.set_selected(true)
 		_on_sound_selected(instance)
@@ -49,6 +52,7 @@ func _on_sound_selected(sound: Control) -> void:
 	maxTimerBoxM.text = selectedSound.maxTimerM
 	maxTimerBoxH.text = selectedSound.maxTimerH
 	soundPathBox.text = selectedSound.soundPath
+	volumeSlider.value = selectedSound.soundVolume
 	for child in soundContainer.get_children():
 		if child.has_method("set_selected"):
 			child.set_selected(child == sound)
@@ -63,9 +67,14 @@ func _process(_delta: float) -> void:
 		selectedSound.maxTimerM = maxTimerBoxM.text
 		selectedSound.maxTimerH = maxTimerBoxH.text
 		selectedSound.soundPath = soundPathBox.text
+		selectedSound.soundVolume = volumeSlider.value
 	for sound in soundContainer.get_children():
 		if !sound.is_connected("selected", _on_sound_selected):
 			sound.connect("selected", _on_sound_selected)
+	if soundVolumeBox.has_focus(): 
+		if !soundVolumeBox.text.is_valid_float(): return
+		volumeSlider.value = float(soundVolumeBox.text)
+	else: soundVolumeBox.text = str(volumeSlider.value).trim_suffix(".0")
 
 func _on_add_pressed() -> void:
 	var instance = soundScene.instantiate()
@@ -84,6 +93,7 @@ func _on_dupe_pressed() -> void:
 	instance.maxTimerM = selectedSound.maxTimerM
 	instance.maxTimerH = selectedSound.maxTimerH
 	instance.soundPath = selectedSound.soundPath
+	instance.soundVolume = selectedSound.soundVolume
 	soundContainer.add_child(instance)
 	instance.set_selected(true)
 	_on_sound_selected(instance)
@@ -114,7 +124,8 @@ func _on_save_pressed() -> void:
 			"maxTimerS": sound.maxTimerS,
 			"maxTimerM": sound.maxTimerM,
 			"maxTimerH": sound.maxTimerH,
-			"soundPath": sound.soundPath
+			"soundPath": sound.soundPath,
+			"soundVolume": sound.soundVolume
 		})
 	var data := {"sounds": soundData}
 	var jsonText := JSON.stringify(data, "\t")
